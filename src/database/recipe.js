@@ -69,42 +69,6 @@ const getAllRecipes = (filterParams) => {
             recipes = Array.from(eliminador);
         }
 
-        //Para filtrar por time (timepo de preparación) esto por si acaso
-        // if (filterParams.time) {
-        //     const tiempo = filterParams.time + ' minutos';
-        //     recipes = recipes.filter((recipe) => recipe.time == tiempo);
-        // }
-        
-        //api/v1/recipes?categories=francesa,rapida
-        //Para filtrar por categories (categorias) es un array
-        // if (filterParams.categories) {
-            
-        //     //Aquí recibe una cadena así que debemos de separarlas
-        //     const categorias = filterParams.categories.split(',').map((cat) => cat.toLowerCase());
-
-        //     recipes = recipes.filter((recipe) => {
-        //         const categoriasMinus = recipe.categories.map((cat) => cat.toLowerCase());
-
-        //         return categorias.filter((_cat) => 
-        //             categoriasMinus.filter((recCat) => recCat.includes(_cat)).length > 0
-        //         ).length > 0
-        //     });
-        // }
-
-        //Hacemos lo mismo para los ingredientes
-        // if (filterParams.ingredients) {
-            
-        //     const ingredientesFiltro = filterParams.ingredients.split(',').map((ing) => ing.toLowerCase().trim());
-
-        //     recipes = recipes.filter((recipe) => {
-        //         const ingredientesMinus = recipe.ingredients.map((ing) => ing.toLowerCase().trim());
-
-        //         return ingredientesFiltro.filter((_ing) =>
-        //             ingredientesMinus.filter((recIngr) => recIngr.includes(_ing)).length > 0
-        //         ).length > 0
-        //     });
-        // }
-
         if (filterParams.limit && parseInt(filterParams.limit) < recipes.length) {
             recipes.splice(0, parseInt(filterParams.limit))
         }
@@ -144,7 +108,7 @@ const createNewRecipe = (newRecipe) => {
     }
 
     try {
-        DB.recipes.push(newRecipe);
+        DB.recipes.unshift(newRecipe); //Esto para que lo añada al inicio
         saveDatabase(DB);
         return newRecipe;
     } catch (error) {
