@@ -1,7 +1,5 @@
 const { v4: uuid } = require('uuid');
 const Ingredient = require('../database/ingredient');
-const { id } = require('apicache');
-const { create } = require('domain');
 
 const getAllIngredients = (q) => {    
     try {

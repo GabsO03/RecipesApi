@@ -1,7 +1,5 @@
 const { v4: uuid } = require('uuid');
 const Recipe = require('../database/recipe');
-const { id } = require('apicache');
-const { create } = require('domain');
 
 const getAllRecipes = (filterParams) => {    
     try {
@@ -36,10 +34,6 @@ const createNewRecipe = (newRecipe) => {
     } catch (error) {
         throw error;
     }
-    // res
-    // .status(error?.status || 500)
-    // .send({ status: "OK", data: createdRecipe });
-    
 }
 
 const updateOneRecipe = (recipeId, changes) => {

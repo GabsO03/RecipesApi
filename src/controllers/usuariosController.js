@@ -1,6 +1,4 @@
-const { describe } = require('node:test');
 const userService = require('../services/usuariosService');
-const { error } = require('console');
 
 const getOneUser = (req, res) => {
 

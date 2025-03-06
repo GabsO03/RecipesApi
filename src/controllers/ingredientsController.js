@@ -1,6 +1,4 @@
-const { describe } = require('node:test');
 const IngredientService = require('../services/ingredientsService');
-const { error } = require('console');
 
 const getAllIngredients = (req, res) => {
 

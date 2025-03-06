@@ -1,7 +1,5 @@
 const { v4: uuid } = require('uuid');
 const User = require('../database/user');
-const { id } = require('apicache');
-const { create } = require('domain');
 
 const getOneUser = (userId) => {
     try {
