@@ -337,7 +337,8 @@
         "huevo",
         "chashu (cerdo asado)",
         "cebollín",
-        "alga nori"
+        "alga nori",
+        "Aguacate"
       ],
       "categories": [
         "japonesa",
@@ -350,9 +351,9 @@
         "Servir los fideos en un bol con el caldo caliente.",
         "Añadir huevo cocido, chashu, cebollín y alga nori."
       ],
-      "alt_img": "recetas/18.jpg",
-      "createdAt": "2025-03-05T12:35:00Z",
-      "updatedAt": "2025-03-05T12:35:00Z"
+      "alt_img": "",
+      "createdAt": "2025-03-06T23:12:25.258Z",
+      "updatedAt": "2025-03-06T23:12:25.289Z"
     },
     {
       "id": 19,
@@ -644,6 +645,8 @@
     "Leche evaporada",
     "Queso andino",
     "Aguaymanto",
-    "Albaricoque"
+    "Albaricoque",
+    "agua",
+    "maizena"
   ]
 }
