@@ -51,7 +51,8 @@
     {
       "id": "db41ff6c-0502-4c7e-b4db-544395ee68fb",
       "user": "santos",
-      "email": "santos@gmail.com"
+      "email": "santos@gmail.com",
+      "role": "admin"
     }
   ],
   "recipes": [
@@ -290,7 +291,7 @@
         "Hornear a 180°C por 40 minutos.",
         "Servir caliente con pan crujiente."
       ],
-      "alt_img": "recetas/16.jpg",
+      "alt_img": "",
       "createdAt": "2025-03-05T12:20:00Z",
       "updatedAt": "2025-03-05T12:20:00Z"
     },
@@ -377,7 +378,7 @@
         "Añadir comino y harina hasta formar una masa.",
         "Formar bolitas y freír en aceite caliente hasta dorar."
       ],
-      "alt_img": "recetas/19.jpg",
+      "alt_img": "",
       "createdAt": "2025-03-05T12:40:00Z",
       "updatedAt": "2025-03-05T12:40:00Z"
     },
@@ -406,7 +407,7 @@
         "Cocinar a fuego lento hasta que las verduras estén tiernas.",
         "Servir con crema agria y eneldo picado."
       ],
-      "alt_img": "recetas/20.jpg",
+      "alt_img": "",
       "createdAt": "2025-03-05T12:45:00Z",
       "updatedAt": "2025-03-05T12:45:00Z"
     },
@@ -434,7 +435,7 @@
         "Freír las gyozas en una sartén y luego añadir un poco de agua para cocerlas al vapor.",
         "Servir con salsa de soja y aceite de sésamo."
       ],
-      "alt_img": "recetas/21.jpg",
+      "alt_img": "",
       "createdAt": "2025-03-05T12:50:00Z",
       "updatedAt": "2025-03-05T12:50:00Z"
     },
@@ -460,7 +461,7 @@
         "Servir las papas fritas con el Queso en grano encima.",
         "Cubrir con la salsa gravy caliente y servir inmediatamente."
       ],
-      "alt_img": "recetas/22.jpg",
+      "alt_img": "",
       "createdAt": "2025-03-05T12:55:00Z",
       "updatedAt": "2025-03-05T12:55:00Z"
     },
@@ -489,7 +490,7 @@
         "Hacer huecos en la salsa y añadir los huevos.",
         "Cocinar a fuego lento hasta que las claras estén cocidas."
       ],
-      "alt_img": "recetas/23.jpg",
+      "alt_img": "",
       "createdAt": "2025-03-05T13:00:00Z",
       "updatedAt": "2025-03-05T13:00:00Z"
     },
