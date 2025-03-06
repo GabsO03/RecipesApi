@@ -1,0 +1,648 @@
+{
+  "users": [
+    {
+      "id": "b6fefc1d-9893-4a44-b0a3-3b44cf517f52",
+      "user": "juanperez",
+      "email": "juanperez@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "19c404b0-12b0-4e1c-9b61-5a0cb1c7c036",
+      "user": "mariagonzalez",
+      "email": "mariagonzalez@example.com",
+      "role": "admin"
+    },
+    {
+      "id": "1b35d8c5-00ed-48b7-9409-b31e9201b54d",
+      "user": "pedrolopez",
+      "email": "pedrolopez@example.com",
+      "role": "normal"
+    },
+    {
+      "id": "c9b1d697-2e88-4b18-90a7-3b97206b918b",
+      "user": "lauravazquez",
+      "email": "lauravazquez@example.com",
+      "role": "normal"
+    },
+    {
+      "id": "3d06b7cf-b033-44fa-9d8c-1001aab95a4a",
+      "user": "carlosmendez",
+      "email": "carlosmendez@example.com",
+      "role": "normal"
+    },
+    {
+      "id": "1aab9674-9ced-4f46-ac74-0a7ce530fcd3",
+      "user": "polloto",
+      "email": "polloto@pototo.com",
+      "role": "normal"
+    },
+    {
+      "id": "8d69487c-2c89-4172-86bf-991d305117de",
+      "user": "Prueba",
+      "email": "pru@eba.com",
+      "role": "normal"
+    },
+    {
+      "id": "d10d980b-0be6-4efa-870e-3b1707c164c9",
+      "user": "user_final",
+      "email": "user@final.com",
+      "role": "normal"
+    },
+    {
+      "id": "db41ff6c-0502-4c7e-b4db-544395ee68fb",
+      "user": "santos",
+      "email": "santos@gmail.com"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "1e399ff5-5267-403f-8bc0-7d72e430b33f",
+      "name": "Lomo Saltado",
+      "description": "Plato peruano con tiras de carne salteadas con cebolla, tomate y papas fritas.",
+      "ingredients": [
+        "carne de res",
+        "cebolla roja",
+        "tomate",
+        "papas fritas",
+        "sillao (salsa de soja)",
+        "vinagre",
+        "ají amarillo",
+        "cilantro",
+        "arroz"
+      ],
+      "categories": [
+        "peruana",
+        "tradicional",
+        "Rápida",
+        "Deliciosa"
+      ],
+      "time": "35 minutos",
+      "instructions": [
+        "Cortar la carne en tiras y sazonar con sal, pimienta y sillao.",
+        "Saltear la carne en un sartén caliente hasta dorar.",
+        "Añadir la cebolla, tomate, ají amarillo y un chorro de vinagre. Cocinar por unos minutos.",
+        "Servir con papas fritas y arroz blanco."
+      ],
+      "alt_img": "recetas/1e399ff5-5267-403f-8bc0-7d72e430b33f.jpg",
+      "createdAt": "2025-03-05T21:46:04.625Z",
+      "updatedAt": "2025-03-05T21:46:04.736Z"
+    },
+    {
+      "id": 7,
+      "name": "Pad Thai",
+      "description": "Fideos de arroz salteados con camarones, tofu y salsa de tamarindo.",
+      "ingredients": [
+        "fideos de arroz",
+        "camarones",
+        "tofu",
+        "huevo",
+        "cebollín",
+        "maní",
+        "salsa de tamarindo",
+        "salsa de pescado",
+        "lima"
+      ],
+      "categories": [
+        "tailandesa",
+        "salteada"
+      ],
+      "time": "30 minutos",
+      "instructions": [
+        "Cocer los fideos de arroz según las instrucciones del paquete.",
+        "Saltear los camarones y el tofu en un sartén caliente.",
+        "Empujar los ingredientes a un lado y cocinar el huevo revuelto.",
+        "Añadir los fideos, salsa de tamarindo y salsa de pescado. Mezclar bien.",
+        "Servir con maní picado, cebollín y rodajas de lima."
+      ],
+      "alt_img": "recetas/7.jpg",
+      "createdAt": "2025-02-24T12:00:00Z",
+      "updatedAt": "2025-02-24T12:00:00Z"
+    },
+    {
+      "id": 8,
+      "name": "Sushi Rolls",
+      "description": "Rollos de sushi japoneses rellenos de aguacate y salmón.",
+      "ingredients": [
+        "alga nori",
+        "arroz para sushi",
+        "vinagre de arroz",
+        "salmón",
+        "aguacate",
+        "pepino",
+        "salsa de soja",
+        "wasabi"
+      ],
+      "categories": [
+        "japonesa",
+        "fría"
+      ],
+      "time": "50 minutos",
+      "instructions": [
+        "Cocinar el arroz y mezclarlo con vinagre de arroz.",
+        "Colocar una hoja de alga nori sobre una esterilla de bambú.",
+        "Extender el arroz sobre el alga y añadir el salmón, aguacate y pepino.",
+        "Enrollar con cuidado y cortar en porciones.",
+        "Servir con salsa de soja y wasabi."
+      ],
+      "alt_img": "recetas/8.jpg",
+      "createdAt": "2025-02-24T12:00:00Z",
+      "updatedAt": "2025-02-24T12:00:00Z"
+    },
+    {
+      "id": 11,
+      "name": "Moussaka",
+      "description": "Plato griego con capas de berenjena, carne y bechamel.",
+      "ingredients": [
+        "berenjena",
+        "carne molida de cordero",
+        "cebolla",
+        "ajo",
+        "tomate triturado",
+        "canela",
+        "Queso rallado",
+        "bechamel"
+      ],
+      "categories": [
+        "griega",
+        "horneada"
+      ],
+      "time": "75 minutos",
+      "instructions": [
+        "Cortar la berenjena en rodajas y hornear hasta dorar.",
+        "Saltear la carne con cebolla, ajo, tomate y canela.",
+        "Preparar una salsa bechamel cremosa.",
+        "En una fuente, alternar capas de berenjena y carne, cubriendo con bechamel.",
+        "Hornear a 180°C por 40 minutos hasta que la parte superior esté dorada."
+      ],
+      "alt_img": "recetas/11.jpg",
+      "createdAt": "2025-02-24T12:30:00Z",
+      "updatedAt": "2025-02-24T12:30:00Z"
+    },
+    {
+      "id": 12,
+      "name": "Curry de Pollo",
+      "description": "Plato indio especiado con pollo y leche de coco.",
+      "ingredients": [
+        "pollo",
+        "cebolla",
+        "ajo",
+        "jengibre",
+        "curry en polvo",
+        "tomate triturado",
+        "leche de coco",
+        "cilantro"
+      ],
+      "categories": [
+        "india",
+        "especiada"
+      ],
+      "time": "50 minutos",
+      "instructions": [
+        "Saltear la cebolla, ajo y jengibre hasta que estén dorados.",
+        "Añadir el curry en polvo y cocinar unos segundos.",
+        "Incorporar el pollo y dorar por todos lados.",
+        "Agregar tomate triturado y leche de coco, cocinar a fuego lento por 30 minutos.",
+        "Servir con arroz y decorar con cilantro fresco."
+      ],
+      "alt_img": "recetas/12.jpg",
+      "createdAt": "2025-02-24T12:30:00Z",
+      "updatedAt": "2025-02-24T12:30:00Z"
+    },
+    {
+      "id": 13,
+      "name": "Kimchi Jjigae",
+      "description": "Estofado coreano picante con kimchi y tofu.",
+      "ingredients": [
+        "kimchi",
+        "tofu",
+        "panceta de cerdo",
+        "cebolla",
+        "ajo",
+        "caldo de hueso",
+        "pasta de gochujang"
+      ],
+      "categories": [
+        "coreana",
+        "picante"
+      ],
+      "time": "45 minutos",
+      "instructions": [
+        "Saltear la panceta con ajo y cebolla en una olla.",
+        "Agregar el kimchi y cocinar por unos minutos.",
+        "Incorporar el caldo y la pasta de gochujang, dejar hervir.",
+        "Añadir el tofu en cubos y cocinar por 10 minutos más.",
+        "Servir caliente con arroz al vapor."
+      ],
+      "alt_img": "recetas/13.jpg",
+      "createdAt": "2025-02-24T12:30:00Z",
+      "updatedAt": "2025-02-24T12:30:00Z"
+    },
+    {
+      "id": 14,
+      "name": "Tacos al Pastor",
+      "description": "Tacos mexicanos con cerdo marinado y piña.",
+      "ingredients": [
+        "carne de cerdo",
+        "achiote",
+        "vinagre",
+        "piña",
+        "cebolla",
+        "cilantro",
+        "tortillas de maíz"
+      ],
+      "categories": [
+        "mexicana",
+        "tradicional"
+      ],
+      "time": "40 minutos",
+      "instructions": [
+        "Marinar la carne de cerdo con achiote y vinagre por al menos 2 horas.",
+        "Cocinar la carne en un sartén hasta que esté dorada.",
+        "Cortar en tiras finas y servir en tortillas de maíz.",
+        "Añadir piña, cebolla y cilantro picado."
+      ],
+      "alt_img": "recetas/14.jpg",
+      "createdAt": "2025-03-05T12:00:00Z",
+      "updatedAt": "2025-03-05T12:00:00Z"
+    },
+    {
+      "id": 16,
+      "name": "Ratatouille",
+      "description": "Plato francés con verduras horneadas en salsa de tomate.",
+      "ingredients": [
+        "berenjena",
+        "calabacín",
+        "pimiento rojo",
+        "cebolla",
+        "tomate",
+        "ajo",
+        "aceite de oliva"
+      ],
+      "categories": [
+        "francesa",
+        "vegetariana"
+      ],
+      "time": "50 minutos",
+      "instructions": [
+        "Cortar las verduras en rodajas finas.",
+        "Preparar una salsa de tomate con cebolla y ajo.",
+        "Colocar las verduras en una bandeja y cubrir con la salsa.",
+        "Hornear a 180°C por 40 minutos.",
+        "Servir caliente con pan crujiente."
+      ],
+      "alt_img": "recetas/16.jpg",
+      "createdAt": "2025-03-05T12:20:00Z",
+      "updatedAt": "2025-03-05T12:20:00Z"
+    },
+    {
+      "id": 17,
+      "name": "Ceviche",
+      "description": "Plato peruano de pescado marinado en limón con cebolla y ají.",
+      "ingredients": [
+        "pescado blanco",
+        "limón",
+        "cebolla roja",
+        "ají amarillo",
+        "cilantro",
+        "sal",
+        "maíz choclo",
+        "camote",
+        "lechuga",
+        "apio"
+      ],
+      "categories": [
+        "peruana",
+        "mariscos"
+      ],
+      "time": "30 minutos",
+      "instructions": [
+        "Cortar el pescado en cubos y marinar en jugo de limón por 15 minutos.",
+        "Añadir cebolla roja en rodajas finas y ají amarillo picado.",
+        "Mezclar con cilantro picado y sal al gusto.",
+        "Servir con maíz choclo cocido y camote."
+      ],
+      "alt_img": "https://es.cravingsjournal.com/wp-content/uploads/2018/08/ceviche-con-leche-de-tigre-2.jpg",
+      "createdAt": "2025-03-05T15:44:18.256Z",
+      "updatedAt": "2025-03-05T15:44:18.312Z"
+    },
+    {
+      "id": 18,
+      "name": "Ramen",
+      "description": "Sopa japonesa con fideos, caldo y toppings variados.",
+      "ingredients": [
+        "fideos de ramen",
+        "caldo de pollo",
+        "soja",
+        "huevo",
+        "chashu (cerdo asado)",
+        "cebollín",
+        "alga nori"
+      ],
+      "categories": [
+        "japonesa",
+        "sopa"
+      ],
+      "time": "45 minutos",
+      "instructions": [
+        "Preparar un caldo con pollo y salsa de soja.",
+        "Cocer los fideos de ramen según las instrucciones del paquete.",
+        "Servir los fideos en un bol con el caldo caliente.",
+        "Añadir huevo cocido, chashu, cebollín y alga nori."
+      ],
+      "alt_img": "recetas/18.jpg",
+      "createdAt": "2025-03-05T12:35:00Z",
+      "updatedAt": "2025-03-05T12:35:00Z"
+    },
+    {
+      "id": 19,
+      "name": "Falafel",
+      "description": "Croquetas de garbanzo fritas, típicas de la cocina árabe.",
+      "ingredients": [
+        "garbanzos",
+        "cebolla",
+        "ajo",
+        "perejil",
+        "cilantro",
+        "comino",
+        "harina"
+      ],
+      "categories": [
+        "árabe",
+        "vegetariana"
+      ],
+      "time": "40 minutos",
+      "instructions": [
+        "Remojar los garbanzos por al menos 8 horas.",
+        "Procesar con cebolla, ajo, perejil y cilantro.",
+        "Añadir comino y harina hasta formar una masa.",
+        "Formar bolitas y freír en aceite caliente hasta dorar."
+      ],
+      "alt_img": "recetas/19.jpg",
+      "createdAt": "2025-03-05T12:40:00Z",
+      "updatedAt": "2025-03-05T12:40:00Z"
+    },
+    {
+      "id": 20,
+      "name": "Borscht",
+      "description": "Sopa rusa de remolacha con crema agria.",
+      "ingredients": [
+        "remolacha",
+        "zanahoria",
+        "cebolla",
+        "papa",
+        "caldo de carne",
+        "crema agria",
+        "eneldo"
+      ],
+      "categories": [
+        "rusa",
+        "sopa"
+      ],
+      "time": "50 minutos",
+      "instructions": [
+        "Cocer la remolacha y rallarla finamente.",
+        "Saltear la zanahoria y la cebolla en una olla.",
+        "Añadir la remolacha, papa y caldo de carne.",
+        "Cocinar a fuego lento hasta que las verduras estén tiernas.",
+        "Servir con crema agria y eneldo picado."
+      ],
+      "alt_img": "recetas/20.jpg",
+      "createdAt": "2025-03-05T12:45:00Z",
+      "updatedAt": "2025-03-05T12:45:00Z"
+    },
+    {
+      "id": 21,
+      "name": "Gyozas",
+      "description": "Empanadillas japonesas rellenas de carne y vegetales.",
+      "ingredients": [
+        "masa para gyozas",
+        "carne de cerdo",
+        "col china",
+        "cebollín",
+        "jengibre",
+        "salsa de soja",
+        "aceite de sésamo"
+      ],
+      "categories": [
+        "japonesa",
+        "aperitivo"
+      ],
+      "time": "35 minutos",
+      "instructions": [
+        "Mezclar la carne con col china, cebollín, jengibre y salsa de soja.",
+        "Rellenar las obleas de masa con la mezcla y cerrar con pliegues.",
+        "Freír las gyozas en una sartén y luego añadir un poco de agua para cocerlas al vapor.",
+        "Servir con salsa de soja y aceite de sésamo."
+      ],
+      "alt_img": "recetas/21.jpg",
+      "createdAt": "2025-03-05T12:50:00Z",
+      "updatedAt": "2025-03-05T12:50:00Z"
+    },
+    {
+      "id": 22,
+      "name": "Poutine",
+      "description": "Plato canadiense con papas fritas, Queso y salsa gravy.",
+      "ingredients": [
+        "papas fritas",
+        "Queso en grano",
+        "caldo de carne",
+        "harina",
+        "mantequilla"
+      ],
+      "categories": [
+        "canadiense",
+        "rápida"
+      ],
+      "time": "30 minutos",
+      "instructions": [
+        "Freír las papas hasta que estén doradas.",
+        "Preparar la salsa gravy con caldo de carne, mantequilla y harina.",
+        "Servir las papas fritas con el Queso en grano encima.",
+        "Cubrir con la salsa gravy caliente y servir inmediatamente."
+      ],
+      "alt_img": "recetas/22.jpg",
+      "createdAt": "2025-03-05T12:55:00Z",
+      "updatedAt": "2025-03-05T12:55:00Z"
+    },
+    {
+      "id": 23,
+      "name": "Shakshuka",
+      "description": "Plato del Medio Oriente con huevos en salsa de tomate y especias.",
+      "ingredients": [
+        "huevos",
+        "tomates",
+        "cebolla",
+        "pimiento rojo",
+        "ajo",
+        "comino",
+        "pimentón"
+      ],
+      "categories": [
+        "medio oriente",
+        "desayuno"
+      ],
+      "time": "25 minutos",
+      "instructions": [
+        "Saltear cebolla, ajo y pimiento rojo en una sartén.",
+        "Añadir tomates triturados y cocinar hasta espesar.",
+        "Condimentar con comino y pimentón.",
+        "Hacer huecos en la salsa y añadir los huevos.",
+        "Cocinar a fuego lento hasta que las claras estén cocidas."
+      ],
+      "alt_img": "recetas/23.jpg",
+      "createdAt": "2025-03-05T13:00:00Z",
+      "updatedAt": "2025-03-05T13:00:00Z"
+    },
+    {
+      "id": 24,
+      "name": "Tiramisú",
+      "description": "Postre italiano con capas de mascarpone y café.",
+      "ingredients": [
+        "bizcochos de soletilla",
+        "Queso mascarpone",
+        "huevo",
+        "azúcar",
+        "café",
+        "cacao en polvo"
+      ],
+      "categories": [
+        "italiana",
+        "postre"
+      ],
+      "time": "20 + refrigeración minutos",
+      "instructions": [
+        "Batir las yemas con azúcar y mezclar con mascarpone.",
+        "Remojar los bizcochos en café y colocar una capa en un molde.",
+        "Añadir una capa de crema de mascarpone y repetir el proceso.",
+        "Espolvorear cacao en polvo y refrigerar por al menos 4 horas."
+      ],
+      "alt_img": "https://img.rtve.es/imagenes/receta-tiramisu-trucos-jugoso-facil-rapido/1684846876915.jpg",
+      "createdAt": "2025-03-05T15:45:16.506Z",
+      "updatedAt": "2025-03-05T15:45:16.545Z"
+    },
+    {
+      "id": "2a63cb46-5bdc-4cf0-8a41-d4e3f626f4b0",
+      "name": "Tallarines verdes",
+      "description": "Una receta casera fácil y práctica para preparar tallarines verdes con lomo. Un clásico imperdible de la gastronomía peruana.",
+      "ingredients": [
+        "Espinaca",
+        "albahaca",
+        "aceite",
+        "leche evaporada",
+        "Ajo",
+        "Queso andino",
+        "Cebolla Roja",
+        "tallarines",
+        "pimienta",
+        "sal"
+      ],
+      "categories": [
+        "peruana",
+        "saludable",
+        "casero"
+      ],
+      "time": "45 minutos",
+      "instructions": [
+        "Blanquear la espinaca y la albahaca por unos minutos en una olla con agua hirviendo. Retirar de la olla",
+        " escurrir y dejar entibiar.\nColocar la espinaca y la albahaca en el vaso de la licuadora. Agregar el aceite",
+        " la leche evaporada",
+        " el ajo",
+        " el Queso y sal al gusto. Si lo deseas puedes agregar en este momento las pecanas o almendras. Licuar y reservar.\nSofreír la cebolla en una olla grande.\nAgregar a la olla la pasta verde que se obtuvo del licuado. Dejar cocinar unos minutos.\nAñadir los tallarines previamente sancochados y mover bien.\nLlevar una sartén al fuego y agregar un chorro de aceite. Cuando esté caliente",
+        " colocar con cuidado el lomo salpimentado y freír. Darle la vuelta y retirar cuando alcance la cocción deseada.\nServir los tallarines y montar el lomo sobre ellos."
+      ],
+      "createdAt": "2025-03-05T15:52:03.789Z",
+      "updatedAt": "2025-03-05T15:52:03.828Z",
+      "alt_img": "https://origin.cronosmedia.glr.pe/large/2024/05/02/lg_6633bb8bed7fed5a801a8bb0.jpg"
+    }
+  ],
+  "ingredientes": [
+    "Lechuga Romana",
+    "Pollo",
+    "Queso Parmesano",
+    "Crutones",
+    "Aderezo César",
+    "Arroz",
+    "Cebolla",
+    "Pimiento Rojo",
+    "Caldo de Pollo",
+    "Azafrán",
+    "Tortillas de Maíz",
+    "Cerdo",
+    "Cilantro",
+    "Limón",
+    "Aguacate",
+    "Masa de Pizza",
+    "Salsa de Tomate",
+    "Mozzarella",
+    "Albahaca",
+    "Aceite de Oliva",
+    "Carne de Res",
+    "Cebolla Roja",
+    "Tomate",
+    "Papas Fritas",
+    "Sillao (Salsa de Soja)",
+    "Vinagre",
+    "Ají Amarillo",
+    "Berenjena",
+    "Calabacín",
+    "Ajo",
+    "Hierbas Provenzales",
+    "Fideos de Arroz",
+    "Camarones",
+    "Tofu",
+    "Huevo",
+    "Cebollín",
+    "Maní",
+    "Salsa de Tamarindo",
+    "Salsa de Pescado",
+    "Lima",
+    "Alga Nori",
+    "Arroz para Sushi",
+    "Vinagre de Arroz",
+    "Salmón",
+    "Pepino",
+    "Wasabi",
+    "Remolacha",
+    "Zanahoria",
+    "Patata",
+    "Repollo",
+    "Caldo de Carne",
+    "Crema Agria",
+    "Eneldo",
+    "Perejil",
+    "Orégano",
+    "Sal",
+    "Pimienta",
+    "Carne Molida de Cordero",
+    "Tomate Triturado",
+    "Canela",
+    "Queso Rallado",
+    "Bechamel",
+    "Jengibre",
+    "Curry en Polvo",
+    "Leche de Coco",
+    "Kimchi",
+    "Panceta de Cerdo",
+    "Caldo de Hueso",
+    "Pasta de Gochujang",
+    "Frijoles Negros",
+    "Chorizo",
+    "Costillas de Cerdo",
+    "Hojas de Laurel",
+    "Naranja",
+    "Salsa de soja",
+    "plátano",
+    "Espinaca",
+    "Queso fresco",
+    "Leche",
+    "Tallarines",
+    "Mariscos",
+    "Mandarina",
+    "Camote",
+    "Apio",
+    "Leche evaporada",
+    "Queso andino",
+    "Aguaymanto",
+    "Albaricoque"
+  ]
+}
