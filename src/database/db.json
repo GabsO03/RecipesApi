@@ -67,7 +67,7 @@
         "Azúcar",
         "Aceite de oliva"
       ],
-      "categories": [
+      "tags": [
         "para 8",
         "tradicional",
         "Rápida",
@@ -100,7 +100,7 @@
         "cilantro",
         "arroz"
       ],
-      "categories": [
+      "tags": [
         "peruana",
         "tradicional",
         "Rápida",
@@ -132,7 +132,7 @@
         "salsa de pescado",
         "lima"
       ],
-      "categories": [
+      "tags": [
         "tailandesa",
         "salteada"
       ],
@@ -162,7 +162,7 @@
         "salsa de soja",
         "wasabi"
       ],
-      "categories": [
+      "tags": [
         "japonesa",
         "fría"
       ],
@@ -192,7 +192,7 @@
         "Queso rallado",
         "bechamel"
       ],
-      "categories": [
+      "tags": [
         "griega",
         "horneada"
       ],
@@ -222,7 +222,7 @@
         "leche de coco",
         "cilantro"
       ],
-      "categories": [
+      "tags": [
         "india",
         "especiada"
       ],
@@ -251,7 +251,7 @@
         "caldo de hueso",
         "pasta de gochujang"
       ],
-      "categories": [
+      "tags": [
         "coreana",
         "picante"
       ],
@@ -280,7 +280,7 @@
         "cilantro",
         "tortillas de maíz"
       ],
-      "categories": [
+      "tags": [
         "mexicana",
         "tradicional"
       ],
@@ -308,7 +308,7 @@
         "ajo",
         "aceite de oliva"
       ],
-      "categories": [
+      "tags": [
         "francesa",
         "vegetariana"
       ],
@@ -340,7 +340,7 @@
         "lechuga",
         "apio"
       ],
-      "categories": [
+      "tags": [
         "peruana",
         "mariscos"
       ],
@@ -369,7 +369,7 @@
         "alga nori",
         "Aguacate"
       ],
-      "categories": [
+      "tags": [
         "japonesa",
         "sopa"
       ],
@@ -397,7 +397,7 @@
         "comino",
         "harina"
       ],
-      "categories": [
+      "tags": [
         "árabe",
         "vegetariana"
       ],
@@ -425,7 +425,7 @@
         "crema agria",
         "eneldo"
       ],
-      "categories": [
+      "tags": [
         "rusa",
         "sopa"
       ],
@@ -454,7 +454,7 @@
         "salsa de soja",
         "aceite de sésamo"
       ],
-      "categories": [
+      "tags": [
         "japonesa",
         "aperitivo"
       ],
@@ -480,7 +480,7 @@
         "harina",
         "mantequilla"
       ],
-      "categories": [
+      "tags": [
         "canadiense",
         "rápida"
       ],
@@ -508,7 +508,7 @@
         "comino",
         "pimentón"
       ],
-      "categories": [
+      "tags": [
         "medio oriente",
         "desayuno"
       ],
@@ -536,7 +536,7 @@
         "café",
         "cacao en polvo"
       ],
-      "categories": [
+      "tags": [
         "italiana",
         "postre"
       ],
@@ -567,7 +567,7 @@
         "pimienta",
         "sal"
       ],
-      "categories": [
+      "tags": [
         "peruana",
         "saludable",
         "casero"
