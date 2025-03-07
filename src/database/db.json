@@ -57,6 +57,35 @@
   ],
   "recipes": [
     {
+      "id": "4er48h4-5267-403f-2f5f-dfg48se8r4g8dsf",
+      "name": "Churranzo",
+      "description": "Cómo preparar churros caseros.",
+      "ingredients": [
+        "harina de trigo",
+        "agua",
+        "sal",
+        "Azúcar",
+        "Aceite de oliva"
+      ],
+      "categories": [
+        "para 8",
+        "tradicional",
+        "Rápida",
+        "supefácil"
+      ],
+      "time": "30 minutos",
+      "instructions": [
+        "Comenzamos midiendo las cantidades de agua y harina. Se utiliza una proporción de 1 parte de harina por 1 parte de agua. Presta atención en este punto, que estamos hablando de medidas de volumen, no de peso.",
+        "Luego, ponemos el agua en un cazo junto con la sal y mezclamos bien para que se disuelva. Encendemos el fuego y llevamos esa agua a ebullición pues tiene que estar bien caliente antes de seguir con la masa.",
+        "En cuanto el agua rompa a hervir, retiramos del fuego y acto seguido echamos la harina de golpe. Así es, toda de una vez. No hay que preocuparse, que no van a formar grumos. Hay que hacerlo así, con el agua bien caliente para  la harina que se cueza un poco y que luego los churros no nos queden con sabor a harina cruda.",
+        "Removemos primero con una cuchara de madera hasta integrar bien los ingredientes y, cuando lo tengamos, lo volcamos todo sobre la encimera. Si estuviera muy caliente, dejamos reposar unos minutos hasta que podamos manipularla sin quemarnos. Ahora le vamos a dar un amasado rápido, únicamente lo que se necesite hasta que veamos que la masa se vuelve lisa y homogénea. Esto nos llevará 1 minuto como máximo 2. No debemos amasar mucho, solo lo justo, pues si se amasa en exceso corremos el riesgo de que luego los churros nos queden duros.",
+        "Terminamos el amasado dándole forma cilíndrica a la masa para que nos facilite meterla dentro de la churrera, utensilio que tendremos previamente preparado con la boquilla de estrella mediana puesta."
+      ],
+      "alt_img": "https://i.pinimg.com/280x280_RS/57/43/59/574359004f4bcb5e938d7bdd6e31e11d.jpg",
+      "createdAt": "2025-03-07T08:55:04.625Z",
+      "updatedAt": "2025-03-07T08:55:04.736Z"
+    },
+    {
       "id": "1e399ff5-5267-403f-8bc0-7d72e430b33f",
       "name": "Lomo Saltado",
       "description": "Plato peruano con tiras de carne salteadas con cebolla, tomate y papas fritas.",
