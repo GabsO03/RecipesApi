@@ -1,25 +1,25 @@
 const { v4: uuid } = require('uuid');
 const User = require('../database/user');
 
-const getOneUser = (userId) => {
+const getOneUser = async (userId) => {
     try {
-        const users = User.getOneUser(userId);
+        const users = await User.getOneUser(userId);
         return users;
     } catch (error) {
         throw error;
     }
 }
 
-const authentifyUser = (params) => {
+const authentifyUser = async (params) => {
     try {
-        const users = User.authentifyUser(params);
+        const users = await User.authentifyUser(params);
         return users;
     } catch (error) {
         throw error;
     }
 }
 
-const createNewUser = (newUser) => {
+const createNewUser = async (newUser) => {
     
     const userToInsert = {
         id: uuid(),
@@ -27,7 +27,7 @@ const createNewUser = (newUser) => {
     };
 
     try {
-        const createdUser = User.createNewUser(userToInsert);
+        const createdUser = await User.createNewUser(userToInsert);
         return createdUser;
     } catch (error) {
         throw error;

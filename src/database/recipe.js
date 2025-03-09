@@ -1,191 +1,208 @@
-const DB = require('./db.json');
-const fs = require('fs');
-const path = require('path');
-const dbPath = path.join(__dirname, './db.json');
+const pool = require('../config/connection_db');
 
-const saveDatabase = (DB) => {
-    fs.writeFileSync(dbPath, JSON.stringify(DB, null, 2), 'utf-8');
-}
-
-
-const filtrado = (entrada, atributo) => {
-    const entradas = entrada.split(',').map((ent) => ent.toLowerCase());
-
-    const resultado = DB.recipes.filter((recipe) => {
-        //Pasamos los atributos de esta receta a minuscula
-
-        //Por si es el nombre
-        if (atributo === 'name') {
-            return entradas.filter((_ent) => 
-                recipe.name.toLowerCase().includes(_ent)
-            ).length > 0
-        }
-
-        const atributoMinus = recipe[atributo].map((attr) => attr.toLowerCase());
-
-        return entradas.filter((_ent) =>
-            atributoMinus.filter((recCat) => recCat.includes(_ent)).length > 0
-        ).length > 0
-    });
-
-    return resultado;
-}
-
-const getAllRecipes = (filterParams) => {
+const getAllRecipes = async (filterParams) => {
     try {
-        let recipes = DB.recipes;
+        let query = `SELECT * FROM recipes`;
+        const values = [];
+        const timeRegex = /\d+/; //Esto para ver si hay algún número que indique tiempo en el filtro
 
-        //Vamos a hacer que se filtre por todo
-        if (filterParams.q) {//Si hay algún filtro 'q'
-            
-            //Filtramos por tiempo
-            let porTiempo;
-            if (!isNaN(filterParams.q)) {
-                const tiempo = filterParams.q + ' minutos';
-                porTiempo = recipes.filter((recipe) => recipe.time == tiempo);
-            }
+        //Filtrado por nombre, ingredientes, tags y tiempo
+        if (filterParams.q) {
+            const filtro = filterParams.q.toLowerCase(); //Esto para evitar confusiones
 
-            //Por nombre
-            const porNombre = filtrado(filterParams.q, 'name');
+            query = query.concat(' WHERE name ILIKE $1 OR tags @> ARRAY[$2]');//ILIKE con I de insensitive para que ignore la mayúscula
 
-            //Filtramos por categoria
-            const porCategoria = filtrado(filterParams.q, 'categories');
+            query = query.concat(' OR EXISTS (SELECT 1 FROM jsonb_array_elements_text(ingredients) elem WHERE elem LIKE $3)'); //Esto porque en mi bbdd guardo un json para los ingredientes
 
-            //Filtramos por ingredientes
-            const porIngredientes = filtrado(filterParams.q, 'ingredients');
+            values.push(`%${filtro}%`, [filtro], `%${filtro}%`);
 
-
-            //Unimos los tres por si alguno coincide
-            let nuevoArray = [];
-            if (porNombre) nuevoArray = porNombre;
-            if (porTiempo) nuevoArray = nuevoArray.concat(porTiempo);
-            if (porCategoria) nuevoArray = nuevoArray.concat(porCategoria);
-            if (porIngredientes) nuevoArray = nuevoArray.concat(porIngredientes);
-            console.log(nuevoArray);
-
-            //Eliminamos duplicados convirtiendo a set y se lo metemos a recipes
-            const eliminador = new Set(nuevoArray);
-
-            recipes = Array.from(eliminador);
-        }
-
-        if (filterParams.limit && parseInt(filterParams.limit) < recipes.length) {
-            recipes.splice(0, parseInt(filterParams.limit))
-        }
-
-        return recipes;
-    } catch (error) {
-        console.log('Hubo un error');
-        throw { status: 500, message: error }
-    }
-}
-
-const getOneRecipe = (recipeId) => {
-
-    try {
-        const recipe = DB.recipes.find((recipe) => recipe.id == recipeId);
-        if (!recipe) {
-            throw {
-                status: 400,
-                message: 'Can`t find recipe with the id ' + recipeId
-            };
-        }
-        return recipe;
-    } catch (error) {
-        throw { status: error?.status || 580, message: error?.message || error };
-    }
-}
-
-const createNewRecipe = (newRecipe) => {
-
-    const yaExiste = DB.recipes.findIndex((recipe) => recipe.name == newRecipe.name) > -1;
-
-    if (yaExiste) {
-        throw {
-            status: 400,
-            message: `Recipe with name '${newRecipe.name}' already exists`
-        }
-    }
-
-    try {
-        DB.recipes.unshift(newRecipe); //Esto para que lo añada al inicio
-        saveDatabase(DB);
-        return newRecipe;
-    } catch (error) {
-        throw { status: 500, message: error?.message || error };
-    }
-    
-}
-
-const updateOneRecipe = (recipeId, changes) => {
-
-    try {
-        const isAlreadyAdded = DB.recipes.findIndex((recipe) => recipe.name == changes.name && recipe.id != recipeId) > -1;
-        if (isAlreadyAdded) {
-            throw {
-                status: 400,
-                message: `Recipe with the name ${changes.name} already exists`
+            if (timeRegex.test(filtro)) {
+                const tiempo = filtro.match(timeRegex)[0]; //Esto para sacarlo de la cadena
+                query = query.concat(' OR time = $4');
+                values.push(`${tiempo} minutos`);
             }
         }
 
-        const indexForUpdate = DB.recipes.findIndex((recipe) => recipe.id == recipeId);
+        query = query.concat(' ORDER BY created_at DESC'); //Para que me salga el más nuevo primero
+
+        if (filterParams.limit) { //Ya no comprueba el length porque la BBDD no da problema con eso
+            query = query.concat(` LIMIT ${parseInt(filterParams.limit)}`);
+        }
+
+        const recipes = await pool.query(query, values);
+        return recipes.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
+const getOneRecipe = async (recipeId) => {
+    try {
+        const query = 'SELECT * FROM recipes WHERE id = $1';
+        const values = [recipeId];
+        const recipe = await pool.query(query, values);
+        if (recipe.rows.length === 0) {
+            throw new Error('Recipe not found');
+        }
+        return recipe.rows[0];
+    } catch (error) {
+        throw error;
+    }
+}
+
+const createNewRecipe = async (recipe) => {
+    const query = `
+    INSERT INTO recipes (id, name, description, ingredients, tags, time, instructions, alt_img, created_at, updated_at)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW(), NOW())
+    RETURNING *;
+    `;
+
+    const values = [
+        recipe.id,
+        recipe.name,
+        recipe.description,
+        JSON.stringify(recipe.ingredients),
+        recipe.tags,
+        recipe.time,
+        recipe.instructions,
+        recipe.alt_img
+    ];
+
+    try{
+        const respuesta = await pool.query(query, values);
+        console.log('Receta insertada:', respuesta.rows[0]);
+        return respuesta.rows[0];
+    }catch(error){
+        throw error;
+    }
+}
+
+const updateOneRecipe = async (recipeId, changes) => {
+    try {
+        const recipeForUpdate = await getOneRecipe(recipeId);
         
-        if (indexForUpdate === -1) {
-            throw {
-                status: 400,
-                message: `Can't find recipe with the id ${recipeId}`
-            };
+        if (!recipeForUpdate) {
+            throw { status: 404, message: `Recipe with ID ${recipeId} not found` };
         }
 
         const updatedRecipe = {
-            ...DB.recipes[indexForUpdate],
+            ...recipeForUpdate,
             ...changes,
+            ingredients: changes.ingredients ?? recipeForUpdate.ingredients,
             updatedAt: new Date().toISOString()
+        };
+
+        const query = `
+            UPDATE recipes
+            SET name = $1, description = $2, ingredients = $3, tags = $4, time = $5, instructions = $6, alt_img = $7, updated_at = NOW()
+            WHERE id = $8
+            RETURNING *;
+        `;
+
+        const values = [
+            updatedRecipe.name,
+            updatedRecipe.description,
+            JSON.stringify(updatedRecipe.ingredients),
+            updatedRecipe.tags,
+            updatedRecipe.time,
+            updatedRecipe.instructions,
+            updatedRecipe.alt_img,
+            recipeId
+        ];
+
+        const respuesta = await pool.query(query, values);
+
+        if (respuesta.rows.length === 0) {
+            throw new Error ('Receta no encontrada para actualizar');
         }
 
-        DB.recipes[indexForUpdate] = updatedRecipe;
-        saveDatabase(DB);
-        return updatedRecipe;
+        return respuesta.rows[0];
     } catch (error) {
-        throw { status: error?.status || 500, message: error?.message || error }
+        throw error;
     }
+};
 
+const deleteOneRecipe =  async (recipeId) => {
+    try {
+        const recipeFound = await getOneRecipe(recipeId);
 
-    if (indexForUpdate === -1) {
-        throw {
-            status: 400,
-            message: 'Recipe with the name ' + changes.name + alread
+        if (!recipeFound) {
+            throw {status: 404, message: `Recipe with ID ${recipeId} not found`}
         }
-    }
-    
 
-    //TODO esta mmda
-    const updatedRecipe = {
-        ...DB.recipes[indexForUpdate],
-        ...changes,
-        updatedAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
+        const query = `Delete from recipes where id = $1 RETURNING *;`;
+        const respuesta = await pool.query(query, [recipeId]);
+
+        if (respuesta.rows.length === 0) {
+            throw { status: 404, message: `Recipe could not be deleted` };
+        }
+
+        return respuesta.rows[0];
+    } catch (error) {
+        throw error;
     }
-    
-    DB.recipes[indexForUpdate] = updatedRecipe;
-    saveDatabase(DB);
-    return updatedRecipe;
+} 
+
+module.exports = {
+    getAllRecipes,
+    getOneRecipe,
+    createNewRecipe,
+    updateOneRecipe,
+    deleteOneRecipe
 }
 
-const deleteOneRecipe = (recipeId) => {
-    const indexForDeletion = DB.recipes.findIndex((recipe) => recipe.id == recipeId);
 
-    if (indexForDeletion === -1) {
-        return;
+/*  
+// Actualizar una receta por su ID
+const updateOneRecipe = async (recipeId, changes) => {
+    try {
+        const { name, description, ingredients, tags, time, instructions, alt_img } = changes;
+
+        const query = `
+            UPDATE recipes
+            SET name = $1, description = $2, ingredients = $3, tags = $4, time = $5, instructions = $6, alt_img = $7, updated_at = NOW()
+            WHERE id = $8
+            RETURNING *;
+        `;
+
+        const values = [name, description, JSON.stringify(ingredients), tags, time, instructions, alt_img, recipeId];
+        const respuesta = await pool.query(query, values);
+
+        if (respuesta.rows.length === 0) {
+            throw { status: 404, message: 'Receta no encontrada para actualizar' };
+        }
+
+        return respuesta.rows[0];
+    } catch (error) {
+        console.error('Error al actualizar receta:', error);
+        throw { status: error?.status || 500, message: error?.message || error };
     }
+}
 
-    DB.recipes.splice(indexForDeletion, 1);
-    saveDatabase(DB);
-} 
+// Eliminar una receta por su ID
+const deleteOneRecipe = async (recipeId) => {
+    try {
+        const query = 'DELETE FROM recipes WHERE id = $1 RETURNING *';
+        const values = [recipeId];
+        const respuesta = await pool.query(query, values);
+
+        if (respuesta.rows.length === 0) {
+            throw { status: 404, message: 'Receta no encontrada para eliminar' };
+        }
+
+        return respuesta.rows[0];
+    } catch (error) {
+        console.error('Error al eliminar receta:', error);
+        throw { status: error?.status || 500, message: error?.message || error };
+    }
+}
 
 module.exports = { 
     getAllRecipes,
-    createNewRecipe,
     getOneRecipe,
+    createNewRecipe,
     updateOneRecipe,
     deleteOneRecipe
- }
+};
+
+*/

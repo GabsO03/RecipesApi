@@ -1,11 +1,11 @@
 const IngredientService = require('../services/ingredientsService');
 
-const getAllIngredients = (req, res) => {
+const getAllIngredients = async (req, res) => {
 
     const { q } = req.query;
 
     try {
-        const allIngredients = IngredientService.getAllIngredients(q);
+        const allIngredients = await IngredientService.getAllIngredients(q);
         res.send({ status: "OK", data: allIngredients });
     } catch (error) {
         res
@@ -15,7 +15,7 @@ const getAllIngredients = (req, res) => {
 
 }
 
-const createNewIngredient = (req,res) => {
+const createNewIngredient = async (req,res) => {
 
     const body  = req.body;
     if (
@@ -28,7 +28,7 @@ const createNewIngredient = (req,res) => {
     const newIngredient = body.name;
 
     try {
-        const createdIngredient = IngredientService.createNewIngredient(newIngredient);
+        const createdIngredient = await IngredientService.createNewIngredient(newIngredient);
         res.status(201).send({ status: "OK", data: createdIngredient });
     } catch (error) {
         res

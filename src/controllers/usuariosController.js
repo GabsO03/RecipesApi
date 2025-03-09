@@ -1,6 +1,6 @@
 const userService = require('../services/usuariosService');
 
-const getOneUser = (req, res) => {
+const getOneUser = async (req, res) => {
 
     const { params: { userId } } = req;
 
@@ -9,7 +9,7 @@ const getOneUser = (req, res) => {
     }
 
     try {
-        const usuario = userService.getOneUser(userId);
+        const usuario = await userService.getOneUser(userId);
         res.send({ status: "OK", data: usuario });        
     } catch (error) {
         res
@@ -19,16 +19,16 @@ const getOneUser = (req, res) => {
 
 }
 
-const authentifyUser = (req, res) => {
+const authentifyUser = async (req, res) => {
 
-    const { user, email } = req.query;
+    const { username, email } = req.query;
 
-    if (!user || !email) {
-        return res.status(400).send({ status: 'Error', message: 'Necesita el user y el email no puede estar vacío' });
+    if (!username || !email) {
+        return res.status(400).send({ status: 'Error', message: 'Necesita el username y el email no puede estar vacío' });
     }
 
     try {
-        const usuario = userService.authentifyUser({ user, email });
+        const usuario = await userService.authentifyUser({ username, email });
         res.send({ status: "OK", data: usuario });        
     } catch (error) {
         res
@@ -38,25 +38,26 @@ const authentifyUser = (req, res) => {
 
 }
 
-const createNewUser = (req,res) => {
+const createNewUser = async (req,res) => {
 
     const body  = req.body;
     
     if (
-        !body.user ||
+        !body.username ||
         !body.email
     ) {
-        res.status(400).send({ status: 'Missing fields', data: { error: 'Faltan datos de la ingrediente' }}
+        res.status(400).send({ status: 'Missing fields', data: { error: 'Faltan datos' }}
         )
         return;
     }
     const newUser = {
-        user: body.user,
-        email: body.email
+        username: body.username,
+        email: body.email,
+        role: body.role ?? 'normal'
     };
 
     try {
-        const createdUser = userService.createNewUser(newUser);
+        const createdUser = await userService.createNewUser(newUser);
         res.status(201).send({ status: "OK", data: createdUser });
     } catch (error) {
         res

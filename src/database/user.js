@@ -1,68 +1,43 @@
-const DB = require('./db.json');
-const fs = require('fs');
-const path = require('path');
-const dbPath = path.join(__dirname, './db.json');
+const pool = require('../config/connection_db');
 
-const saveDatabase = (DB) => {
-    fs.writeFileSync(dbPath, JSON.stringify(DB, null, 2), 'utf-8');
-}
-
-const getOneUser = (userId) => {
-
+const getOneUser = async (userId) => {
     try {
-        const user = DB.users.find((user) => user.id == userId);
-
-        if (!user) {
-            throw {
-                status: 400,
-                message: 'Can`t find user'
-            };
+        const query = 'SELECT * FROM users WHERE id = $1';
+        const { rows } = await pool.query(query, [userId]);
+        if (rows.length === 0) {
+            throw { status: 400, message: "Can't find username" };
         }
-        return user;
+        return rows[0];
     } catch (error) {
-        throw { status: error?.status || 580, message: error?.message || error };
+        throw { status: error?.status || 500, message: error?.message || error };
     }
-}
+};
 
-const authentifyUser = (params) => {
-
+const authentifyUser = async (params) => {
     try {
-        const user = DB.users.find((user) => user.user == params.user && user.email == params.email);
+        const query = 'SELECT * FROM users WHERE username = $1 AND email = $2';
 
-        if (!user) {
-            throw {
-                status: 400,
-                message: 'Can`t find user'
-            };
+        const respuesta = await pool.query(query, [params.username, params.email]);
+
+        if (respuesta.rows.length === 0) {
+            throw { status: 400, message: "Can't find username" };
         }
-        return user;
+        return respuesta.rows[0];
     } catch (error) {
-        throw { status: error?.status || 580, message: error?.message || error };
+        throw { status: error?.status || 500, message: error?.message || error };
     }
-}
+};
 
-const createNewUser = (newUser) => {
-
-    console.log(newUser);
-
-    const yaExiste = DB.users.findIndex((user) => user.user == newUser.user && user.email == newUser.email) > -1;
-
-    if (yaExiste) {
-        throw {
-            status: 400,
-            message: `User already exists`
-        }
-    }
-
+const createNewUser = async (newUser) => {
     try {
-        DB.users.push(newUser);
-        saveDatabase(DB);
-        return newUser;
+        const query = 'INSERT INTO users (id, username, email, role) VALUES ($1, $2, $3, $4) RETURNING *';
+        const values = [newUser.id, newUser.username, newUser.email, newUser.role];
+        const { rows } = await pool.query(query, values);
+        return rows[0];
     } catch (error) {
         throw { status: 500, message: error?.message || error };
     }
-    
-}
+};
 
 module.exports = {
     getOneUser,

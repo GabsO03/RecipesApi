@@ -129,12 +129,12 @@
         "cebollín",
         "maní",
         "salsa de tamarindo",
-        "salsa de pescado",
-        "lima"
+        "salsa de pescado"
       ],
       "tags": [
         "tailandesa",
-        "salteada"
+        "salteada",
+        "deliciosa"
       ],
       "time": "30 minutos",
       "instructions": [
@@ -145,8 +145,8 @@
         "Servir con maní picado, cebollín y rodajas de lima."
       ],
       "alt_img": "recetas/7.jpg",
-      "createdAt": "2025-02-24T12:00:00Z",
-      "updatedAt": "2025-02-24T12:00:00Z"
+      "createdAt": "2025-03-08T00:36:35.238Z",
+      "updatedAt": "2025-03-08T00:36:35.277Z"
     },
     {
       "id": 8,
@@ -178,6 +178,7 @@
       "createdAt": "2025-02-24T12:00:00Z",
       "updatedAt": "2025-02-24T12:00:00Z"
     },
+
     {
       "id": 11,
       "name": "Moussaka",
@@ -295,6 +296,7 @@
       "createdAt": "2025-03-05T12:00:00Z",
       "updatedAt": "2025-03-05T12:00:00Z"
     },
+
     {
       "id": 16,
       "name": "Ratatouille",
@@ -383,34 +385,6 @@
       "alt_img": "",
       "createdAt": "2025-03-06T23:12:25.258Z",
       "updatedAt": "2025-03-06T23:12:25.289Z"
-    },
-    {
-      "id": 19,
-      "name": "Falafel",
-      "description": "Croquetas de garbanzo fritas, típicas de la cocina árabe.",
-      "ingredients": [
-        "garbanzos",
-        "cebolla",
-        "ajo",
-        "perejil",
-        "cilantro",
-        "comino",
-        "harina"
-      ],
-      "tags": [
-        "árabe",
-        "vegetariana"
-      ],
-      "time": "40 minutos",
-      "instructions": [
-        "Remojar los garbanzos por al menos 8 horas.",
-        "Procesar con cebolla, ajo, perejil y cilantro.",
-        "Añadir comino y harina hasta formar una masa.",
-        "Formar bolitas y freír en aceite caliente hasta dorar."
-      ],
-      "alt_img": "",
-      "createdAt": "2025-03-05T12:40:00Z",
-      "updatedAt": "2025-03-05T12:40:00Z"
     },
     {
       "id": 20,
@@ -521,8 +495,8 @@
         "Cocinar a fuego lento hasta que las claras estén cocidas."
       ],
       "alt_img": "",
-      "createdAt": "2025-03-05T13:00:00Z",
-      "updatedAt": "2025-03-05T13:00:00Z"
+      "createdAt": "2025-03-08T00:06:04.062Z",
+      "updatedAt": "2025-03-08T00:06:04.360Z"
     },
     {
       "id": 24,
@@ -676,6 +650,9 @@
     "Aguaymanto",
     "Albaricoque",
     "agua",
-    "maizena"
+    "maizena",
+    "xhgjgykhukhgjhfg",
+    "fdsgd",
+    "zfdxgcgvhkljñklbhvcbn"
   ]
 }

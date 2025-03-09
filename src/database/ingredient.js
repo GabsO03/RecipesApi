@@ -1,48 +1,43 @@
-const DB = require('./db.json');
-const fs = require('fs');
-const path = require('path');
-const dbPath = path.join(__dirname, './db.json');
-
-const saveDatabase = (DB) => {
-    fs.writeFileSync(dbPath, JSON.stringify(DB, null, 2), 'utf-8');
-}
+const pool = require('../config/connection_db');
 
 
-const getAllIngredients = (q) => {
+const getAllIngredients = async (q) => {
     try {
-        let ingredientes = DB.ingredientes;
+        let query = `SELECT * FROM ingredients`;
+        const values = [];
 
         if (q) {
-            ingredientes = ingredientes.filter(ing => ing.toLowerCase().includes(q.toLowerCase())).splice(0, 8);
+            query += ` WHERE name ILIKE $1 LIMIT 8`;
+            values.push(`%${q}%`);
         }
 
-        return ingredientes
+        const result = await pool.query(query, values);
+        return result.rows;
     } catch (error) {
         console.log('Hubo un error');
-        throw { status: 500, message: error }
+        throw { status: 500, message: error };
     }
-}
+};
 
-const createNewIngredient = (newingrediente) => {
-
-    const yaExiste = DB.ingredientes.findIndex((ingrediente) => ingrediente.toLowerCase().localeCompare(newingrediente.toLowerCase(), 'es', { sensitivity: "base" }) === 0) > -1;
-
-    if (yaExiste) {
-        throw {
-            status: 400,
-            message: `ingrediente with name '${newingrediente}' already exists`
-        }
-    }
-
+const createNewIngredient = async (newIngredient) => {
     try {
-        DB.ingredientes.push(newingrediente);
-        saveDatabase(DB);
-        return newingrediente;
+        const checkQuery = `SELECT COUNT(*) FROM ingredients WHERE LOWER(name) = LOWER($1)`;
+        const checkResult = await pool.query(checkQuery, [newIngredient]);
+        
+        if (parseInt(checkResult.rows[0].count) > 0) {
+            throw {
+                status: 400,
+                message: `Ingredient with name '${newIngredient}' already exists`
+            };
+        }
+
+        const insertQuery = `INSERT INTO ingredients (name) VALUES ($1) RETURNING *`;
+        const result = await pool.query(insertQuery, [newIngredient]);
+        return result.rows[0];
     } catch (error) {
         throw { status: 500, message: error?.message || error };
     }
-    
-}
+};
 
 module.exports = { 
     getAllIngredients,

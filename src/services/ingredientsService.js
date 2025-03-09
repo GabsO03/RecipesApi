@@ -1,18 +1,17 @@
-const { v4: uuid } = require('uuid');
 const Ingredient = require('../database/ingredient');
 
-const getAllIngredients = (q) => {    
+const getAllIngredients = async (q) => {    
     try {
-        const allIngredients = Ingredient.getAllIngredients(q);
+        const allIngredients = await Ingredient.getAllIngredients(q);
         return allIngredients;
     } catch (error) {
         throw error;
     }
 }
 
-const createNewIngredient = (newIngredient) => {
+const createNewIngredient = async (newIngredient) => {
     try {
-        const createdIngredient = Ingredient.createNewIngredient(newIngredient);
+        const createdIngredient = await Ingredient.createNewIngredient(newIngredient);
         return createdIngredient;
     } catch (error) {
         throw error;

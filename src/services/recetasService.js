@@ -1,25 +1,25 @@
 const { v4: uuid } = require('uuid');
 const Recipe = require('../database/recipe');
 
-const getAllRecipes = (filterParams) => {    
+const getAllRecipes = async (filterParams) => {    
     try {
-        const allRecipes = Recipe.getAllRecipes(filterParams);
+        const allRecipes = await Recipe.getAllRecipes(filterParams);
         return allRecipes;
     } catch (error) {
         throw error;
     }
 }
 
-const getOneRecipe = (recipeId) => {
+const getOneRecipe = async (recipeId) => {
     try {
-        const recipes = Recipe.getOneRecipe(recipeId);
+        const recipes = await Recipe.getOneRecipe(recipeId);
         return recipes;
     } catch (error) {
         throw error;
     }
 }
 
-const createNewRecipe = (newRecipe) => {
+const createNewRecipe = async (newRecipe) => {
     
     const recipeToInsert = {
         id: uuid(),
@@ -29,25 +29,28 @@ const createNewRecipe = (newRecipe) => {
     };
 
     try {
-        const createdRecipe = Recipe.createNewRecipe(recipeToInsert);
+        const createdRecipe = await Recipe.createNewRecipe(recipeToInsert);
         return createdRecipe;
     } catch (error) {
         throw error;
     }
 }
 
-const updateOneRecipe = (recipeId, changes) => {
+const updateOneRecipe = async (recipeId, changes) => {
     try {
-        const updatedRecipe = Recipe.updateOneRecipe(recipeId, changes);
+        const updatedRecipe = await Recipe.updateOneRecipe(recipeId, changes);
         return updatedRecipe;    
     } catch (error) {
         throw error;
     }
 }
 
-const deleteOneRecipe = (recipeId) => {
-
-    Recipe.deleteOneRecipe(recipeId);
+const deleteOneRecipe = async (recipeId) => {
+    try {
+        await Recipe.deleteOneRecipe(recipeId);   
+    } catch (error) {
+        throw error;
+    }
 }
 
 module.exports = {
